@@ -1,0 +1,36 @@
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+const PORT = 5001;
+
+app.use(cors());
+app.use(express.json());
+
+let users = [];
+
+app.post("/api/register", (req, res) => {
+    const { name, email } = req.body;
+
+    if (!name || !email) {
+        return res.status(400).json({
+            error: "Name and Email are required"
+        });
+    }
+
+    users.push({
+        id: users.length + 1,
+        name,
+        email
+    });
+
+    console.log("Registered User:", name, email);
+
+    res.json({
+        message: "Registration Successful"
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});

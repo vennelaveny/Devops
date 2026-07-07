@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!-- 
+    Name: [Your Name]
+    Roll No: 24WH1A05Q3
+    Project: WonderFest - Event Registration Page
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WonderFest Registration</title>
+
+<style>
+
+body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    margin:0;
+    padding:30px 15px;
+    min-height:100vh;
+    background:linear-gradient(135deg, #7e22ce, #c026d3, #f472b6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    max-width:650px;
+    width:100%;
+    background-color:white;
+    padding:35px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align:center;
+    color:#7e22ce;
+    margin-bottom:4px;
+}
+
+p.subtitle{
+    text-align:center;
+    color:gray;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.section-title{
+    background:linear-gradient(90deg, #c026d3, #7e22ce);
+    color:white;
+    padding:10px 16px;
+    border-radius:8px;
+    margin:25px 0 15px;
+    font-weight:600;
+    font-size:15px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+}
+
+.full{
+    grid-column:1/span 2;
+}
+
+label{
+    font-weight:600;
+    color:#333;
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    background-color:#faf5ff;
+    font-size:14px;
+}
+
+input:focus, select:focus, textarea:focus{
+    outline:none;
+    border-color:#c026d3;
+}
+
+textarea{
+    resize:none;
+}
+
+button{
+    width:100%;
+    margin-top:22px;
+    padding:13px;
+    background:linear-gradient(90deg, #c026d3, #7e22ce);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+#success{
+    display:none;
+    margin-top:15px;
+    padding:12px;
+    background-color:#dcfce7;
+    color:#166534;
+    text-align:center;
+    border-radius:8px;
+    font-size:14px;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    font-size:12px;
+    color:gray;
+}
+
+@media(max-width:600px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+    .full{
+        grid-column:auto;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎉 WonderFest</h1>
+<p class="subtitle">Event Registration Form</p>
+
+<form onsubmit="registerUser(event)">
+
+<div class="section-title">Personal Information</div>
+<div class="grid">
+
+<div class="field">
+<label>Full Name</label>
+<input type="text" id="name" placeholder="Enter full name">
+</div>
+
+<div class="field">
+<label>Email Address</label>
+<input type="email" id="email" placeholder="Enter email">
+</div>
+
+<div class="field">
+<label>Phone Number</label>
+<input type="tel" placeholder="Enter mobile number">
+</div>
+
+<div class="field">
+<label>Date of Birth</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Gender</label>
+<select>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="field">
+<label>City</label>
+<input type="text" placeholder="Enter city">
+</div>
+
+</div>
+
+<div class="section-title">Academic Details</div>
+<div class="grid">
+
+<div class="field">
+<label>College Name</label>
+<input type="text" id="college" placeholder="Enter college name">
+</div>
+
+<div class="field">
+<label>University</label>
+<input type="text" placeholder="Enter university">
+</div>
+
+<div class="field">
+<label>Department</label>
+<select>
+<option>CSE</option>
+<option>IT</option>
+<option>ECE</option>
+<option>EEE</option>
+<option>AIML</option>
+<option>Data Science</option>
+</select>
+</div>
+
+<div class="field">
+<label>Year of Study</label>
+<select>
+<option>1st Year</option>
+<option>2nd Year</option>
+<option>3rd Year</option>
+<option>4th Year</option>
+</select>
+</div>
+
+</div>
+
+<div class="section-title">Event Participation</div>
+<div class="grid">
+
+<div class="field">
+<label>Event Category</label>
+<select>
+<option>Hackathon</option>
+<option>AI Challenge</option>
+<option>Project Expo</option>
+<option>Startup Pitch</option>
+<option>Paper Presentation</option>
+</select>
+</div>
+
+<div class="field">
+<label>Team Size</label>
+<input type="number" min="1" max="10">
+</div>
+
+<div class="field full">
+<label>Technical Skills</label>
+<input type="text" placeholder="Java, Python, AI, Web Development">
+</div>
+
+<div class="field">
+<label>Emergency Contact</label>
+<input type="tel" placeholder="Emergency number">
+</div>
+
+<div class="field">
+<label>Accommodation Required</label>
+<select>
+<option>Yes</option>
+<option>No</option>
+</select>
+</div>
+
+<div class="field full">
+<label>Upload Resume</label>
+<input type="file">
+</div>
+
+<div class="field full">
+<label>Why do you want to participate?</label>
+<textarea rows="3" placeholder="Tell us about yourself and your interests"></textarea>
+</div>
+
+</div>
+
+<button type="submit">Register Now</button>
+
+<div id="success">Registration Successful! Welcome to WonderFest.</div>
+
+</form>
+
+<div class="footer">
+&copy; 2026 WonderFest <br>
+Roll No: 24WH1A05Q3
+</div>
+
+</div>
+
+<script>
+
+function registerUser(e){
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let college = document.getElementById("college").value;
+
+    if(name === "" || email === "" || college === ""){
+        alert("Please fill all required fields.");
+        return;
+    }
+
+    document.getElementById("success").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
